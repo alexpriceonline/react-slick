@@ -29,7 +29,6 @@ export var getTrackCSS = function(spec) {
     trackHeight = spec.totalSlideHeight;
   }
 
-  console.log(spec.left);
   var style = {
     opacity: 1,
     WebkitTransform: !spec.vertical ? 'translate3d(' + spec.left + 'px, 0px, 0px)' : 'translate3d(0px, ' + spec.left + 'px, 0px)',
