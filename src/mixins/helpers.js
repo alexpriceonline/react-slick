@@ -22,7 +22,16 @@ var helpers = {
     }
 
     const slideHeight = this.getHeight(slickList.querySelector('[data-index="0"]'));
-    const listHeight = slideHeight * props.slidesToShow;
+    let listHeight = slideHeight * props.slidesToShow;
+
+    if (props.vertical) {
+      listHeight = props.height || 400;
+    }
+
+    let totalSlideHeight = 0;
+    for (let i = 0; i < slideCount; i++) {
+      totalSlideHeight += this.getHeight(slickList.querySelector(`[data-index="${i}"]`))
+    }
 
     var currentSlide = props.rtl ? slideCount - 1 - props.initialSlide : props.initialSlide;
 
@@ -33,6 +42,7 @@ var helpers = {
       trackWidth,
       currentSlide,
       slideHeight,
+      totalSlideHeight,
       listHeight,
     }, function () {
 
@@ -65,7 +75,16 @@ var helpers = {
     }
 
     const slideHeight = this.getHeight(slickList.querySelector('[data-index="0"]'));
-    const listHeight = slideHeight * props.slidesToShow;
+    let listHeight = slideHeight * props.slidesToShow;
+
+    if (props.vertical) {
+      listHeight = props.height || 400;
+    }
+
+    let totalSlideHeight = 0;
+    for (let i = 0; i < slideCount; i++) {
+      totalSlideHeight += this.getHeight(slickList.querySelector(`[data-index="${i}"]`))
+    }
 
     // pause slider if autoplay is set to false
     if(props.autoplay) {
@@ -80,6 +99,7 @@ var helpers = {
       listWidth,
       trackWidth,
       slideHeight,
+      totalSlideHeight,
       listHeight,
     }, function () {
 

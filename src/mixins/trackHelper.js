@@ -26,9 +26,10 @@ export var getTrackCSS = function(spec) {
       trackWidth = (spec.slideCount + 2*spec.slidesToShow) * spec.slideWidth;
     }
   } else {
-    trackHeight = trackChildren * spec.slideHeight;
+    trackHeight = spec.totalSlideHeight;
   }
 
+  console.log(spec.left);
   var style = {
     opacity: 1,
     WebkitTransform: !spec.vertical ? 'translate3d(' + spec.left + 'px, 0px, 0px)' : 'translate3d(0px, ' + spec.left + 'px, 0px)',
@@ -124,7 +125,19 @@ export var getTrackLeft = function (spec) {
   if (!spec.vertical) {
     targetLeft = ((spec.slideIndex * spec.slideWidth) * -1) + slideOffset;
   } else {
-    targetLeft = ((spec.slideIndex * spec.slideHeight) * -1) + verticalOffset;
+    targetSlideIndex = (spec.slideIndex + spec.slidesToShow);
+    targetSlide = ReactDOM.findDOMNode(spec.trackRef).childNodes[targetSlideIndex];
+
+    const getHeight = (elem) => {
+      return elem.getBoundingClientRect().height || elem.offsetHeight || 0;
+    };
+
+    let offset = 0;
+    for (let i = targetSlideIndex - 1; i >= 0; i--) {
+      offset += getHeight(ReactDOM.findDOMNode(spec.trackRef).childNodes[i]);
+    }
+
+    targetLeft = offset * -1;
   }
 
   if (spec.variableWidth === true) {
