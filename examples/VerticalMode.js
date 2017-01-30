@@ -4,30 +4,25 @@ import Slider from '../src/slider'
 export default class VerticalMode extends Component {
   render() {
     const settings = {
-      dots: true,
-      infinite: true,
-      slidesToShow: 3,
+      arrows: false,
       autoplay: true,
-      slidesToScroll: 1,
+      autoplaySpeed: 3000,
+      slidesToShow: 1,
       vertical: true,
-      verticalSwiping: true,
-      beforeChange: function (currentSlide, nextSlide) {
-        console.log('before change', currentSlide, nextSlide);
-      },
-      afterChange: function (currentSlide) {
-        console.log('after change', currentSlide);
-      },
+      height: 500,
     };
     return (
       <div>
         <h2>Vertical Mode</h2>
         <Slider {...settings}>
-          <div><h3>1</h3></div>
-          <div><h3>2</h3></div>
-          <div><h3>3</h3></div>
-          <div><h3>4</h3></div>
-          <div><h3>5</h3></div>
-          <div><h3>6</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '200px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '800px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '200px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '500px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>1</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '400px' }}>1</h3></div>
         </Slider>
       </div>
     );
