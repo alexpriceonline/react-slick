@@ -86,13 +86,6 @@ var helpers = {
       totalSlideHeight += this.getHeight(slickList.querySelector(`[data-index="${i}"]`))
     }
 
-    // pause slider if autoplay is set to false
-    if(props.autoplay) {
-      this.pause();
-    } else {
-      this.autoPlay();
-    }
-
     this.setState({
       slideCount,
       slideWidth,
@@ -111,6 +104,13 @@ var helpers = {
       var trackStyle = getTrackCSS(assign({left: targetLeft}, props, this.state));
 
       this.setState({trackStyle: trackStyle});
+
+      // pause slider if autoplay is set to false
+      if(!props.autoplay) {
+        this.pause();
+      } else {
+        this.autoPlay();
+      }
     });
   },
   getWidth: function getWidth(elem) {
