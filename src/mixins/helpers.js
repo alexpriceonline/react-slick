@@ -148,7 +148,6 @@ var helpers = {
   },
   slideHandler: function (index) {
     // Functionality of animateSlide and postSlide is merged into this function
-    // console.log('slideHandler', index);
     var targetSlide, currentSlide;
     var targetLeft, currentLeft;
     var callback;
@@ -291,6 +290,11 @@ var helpers = {
         if (this.props.afterChange) {
           this.props.afterChange(currentSlide);
         }
+
+        // This stops the slider from bouncing back
+        if (currentSlide === 0) {
+          this.autoPlay(1500);
+        }
         delete this.animationEndCallback;
       };
 
@@ -352,13 +356,13 @@ var helpers = {
 
     this.slideHandler(nextIndex);
   },
-  autoPlay: function () {
+  autoPlay: function (time) {
     if (this.state.autoPlayTimer) {
       clearTimeout(this.state.autoPlayTimer);
     }
     if (this.props.autoplay) {
       this.setState({
-        autoPlayTimer: setTimeout(this.play, this.props.autoplaySpeed)
+        autoPlayTimer: setTimeout(this.play, time || this.props.autoplaySpeed)
       });
     }
   },

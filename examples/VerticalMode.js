@@ -6,7 +6,7 @@ export default class VerticalMode extends Component {
     super(props);
 
     this.state = {
-      vertical: true,
+      vertical: false,
     };
 
     this.click = this.click.bind(this);
@@ -25,11 +25,14 @@ export default class VerticalMode extends Component {
     const settings = {
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 4000,
+      autoplaySpeed: 3000,
       speed: 3000,
-      slidesToShow: vertical ? 8 : 1,
+      slidesToShow: vertical ? 2 : 3,
       vertical,
       height: 500,
+      verticalSwiping: vertical,
+      cssEase: 'linear',
+      swipeToSlide: true,
     };
 
     return (
@@ -44,14 +47,16 @@ export default class VerticalMode extends Component {
         >
           <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>1</h3></div>
           <div style={{height: 'auto'}}><h3 style={{ height: '200px' }}>2</h3></div>
-          <div style={{height: 'auto'}}><h3 style={{ height: '800px' }}>3</h3></div>
+          <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>3</h3></div>
           <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>4</h3></div>
-          <div style={{height: 'auto'}}><h3 style={{ height: '200px' }}>5</h3></div>
-          <div style={{height: 'auto'}}><h3 style={{ height: '500px' }}>6</h3></div>
-          <div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>7</h3></div>
-          <div style={{height: 'auto'}}><h3 style={{ height: '400px' }}>8</h3></div>
         </Slider>
       </div>
     );
   }
 }
+          /*
+           *<div style={{height: 'auto'}}><h3 style={{ height: '200px' }}>5</h3></div>
+           *<div style={{height: 'auto'}}><h3 style={{ height: '200px' }}>6</h3></div>
+           *<div style={{height: 'auto'}}><h3 style={{ height: '300px' }}>7</h3></div>
+           *<div style={{height: 'auto'}}><h3 style={{ height: '400px' }}>8</h3></div>
+           */

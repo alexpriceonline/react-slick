@@ -111,8 +111,6 @@ export var getTrackLeft = function (spec) {
     }
   }
 
-
-
   if (spec.centerMode) {
     if(spec.infinite) {
       slideOffset += spec.slideWidth * Math.floor(spec.slidesToShow / 2);
