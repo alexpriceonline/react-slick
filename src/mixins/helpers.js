@@ -293,7 +293,7 @@ var helpers = {
 
         // This stops the slider from bouncing back
         if (currentSlide === 0) {
-          this.autoPlay(1500);
+          this.autoPlay(1200);
         }
         delete this.animationEndCallback;
       };
