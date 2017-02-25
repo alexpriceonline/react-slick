@@ -27,12 +27,28 @@ export default class VerticalMode extends Component {
       autoplay: true,
       autoplaySpeed: 3000,
       speed: 3000,
-      slidesToShow: vertical ? 2 : 3,
+      slidesToShow: vertical ? 4 : 3,
       vertical,
       height: 500,
       verticalSwiping: vertical,
       cssEase: 'linear',
       swipeToSlide: true,
+      responsive: [{
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+        }
+      }, {
+        breakpoint: 840,
+        settings: {
+          slidesToShow: 2,
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        }
+      }]
     };
 
     return (
